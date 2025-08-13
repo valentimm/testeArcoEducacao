@@ -1,11 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="../testeArcoEducação/assets/logo-arco.png">
+    <title>Ciclo da Água</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    Hello word
+
+    <div id="tela-inicial" class="tela ativa">
+        <h1>O Ciclo da Água</h1>
+        <button id="btn-iniciar">Iniciar</button>
+    </div>
+    <div id="tela-jogo" class="tela">
+        <div id="descricoes-container">
+            <div id="desc-evaporacao" class="descricao" draggable="true">O Sol aquece a água, transformando-a em vapor.</div>
+            <div id="desc-condensacao" class="descricao" draggable="true">O vapor esfria e forma as nuvens.</div>
+            <div id="desc-precipitacao" class="descricao" draggable="true">A água cai das nuvens como chuva.</div>
+            <div id="desc-coleta" class="descricao" draggable="true">A água volta para os rios e lagos.</div>
+        </div>
+
+        <div id="etapas-container">
+            <div class="etapa">
+                <h2>Evaporação</h2>
+                <div id="drop-evaporacao" class="dropzone"></div>
+            </div>
+            <div class="etapa">
+                <h2>Condensação</h2>
+                <div id="drop-condensacao" class="dropzone"></div>
+            </div>
+            <div class="etapa">
+                <h2>Precipitação</h2>
+                <div id="drop-precipitacao" class="dropzone"></div>
+            </div>
+            <div class="etapa">
+                <h2>Coleta</h2>
+                <div id="drop-coleta" class="dropzone"></div>
+            </div>
+        </div>
+        <p id="feedback-final"></p>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
