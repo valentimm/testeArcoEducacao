@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function criarId(texto) {
         return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
     }
-
+    // Função para embaralhar os elementos
     function randomizer(array) {
         const arrayCopiado = [...array];
         for (let i = arrayCopiado.length - 1; i > 0; i--) {
@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return arrayCopiado;
     }
+    // Funções do Timer
 
     function iniciarTimer() {
         if (timerIntervalo) return;
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             timer.textContent = `${minutosFormatados}:${segundosFormatados}`;
         }, 1000);
     }
+
     function pararTimer() {
         clearInterval(timerIntervalo);
         timerIntervalo = null;
@@ -180,7 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         dropzone.removeEventListener('animationend', handler);
                     });
 
-                    // O timeout agora serve apenas para limpar a cor de fundo e a mensagem
                     setTimeout(() => {
                         feedbackErro.textContent = '';
                         dropzone.classList.remove('incorreto');
@@ -205,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (acertos === totalDeEtapas) {
             somVitoria.currentTime = 0; // Reinicia o som
             somVitoria.play();
-            feedbackFinal.textContent = 'Parabéns! Você completou o capítulo em ' + timer.textContent + '!';
+            feedbackFinal.textContent = '🏆Parabéns! Você completou o capítulo em ' + timer.textContent + '! 🏆';
             btnReiniciar.style.display = 'block';
             pararTimer();
         }
@@ -214,7 +215,15 @@ document.addEventListener('DOMContentLoaded', () => {
         telaInicial.classList.remove('ativa');
         telaJogo.style.display = 'flex';
         telaJogo.classList.add('ativa');
+        const sons = [somAcerto, somErro, somVitoria];
+        sons.forEach(som => {
 
+        som.play().catch(error => console.warn("O áudio foi bloqueado pelo navegador, mas a interação do usuário deve liberá-lo."));
+
+        som.pause();
+
+        som.currentTime = 0;
+    });
         iniciarTimer();
     });
 
