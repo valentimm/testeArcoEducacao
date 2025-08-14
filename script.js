@@ -3,8 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const telaInicial = document.getElementById('tela-inicial');
     const telaJogo = document.getElementById('tela-jogo');
     const btnIniciar = document.getElementById('btn-iniciar');
+    const btnReiniciar = document.getElementById('btn-reiniciar');
     const tituloPagina = document.querySelector('title');
     const tituloInicial = telaInicial.querySelector('h1');
+    const timer = document.getElementById('timer');
 
     const descricoesContainer = document.getElementById('descricoes-container');
     const etapasContainer = document.getElementById('etapas-container');
@@ -22,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let acertos = 0;
     let totalDeEtapas = 0;
 
+    // Variáveis timer
+    let segundosTotais = 0;
+    let timerIntervalo;
+
     // Formatação do texto
     function criarId(texto) {
         return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
@@ -34,6 +40,30 @@ document.addEventListener('DOMContentLoaded', () => {
             [arrayCopiado[i], arrayCopiado[j]] = [arrayCopiado[j], arrayCopiado[i]];
         }
         return arrayCopiado;
+    }
+
+    function iniciarTimer() {
+        if (timerIntervalo) return;
+
+        timerIntervalo = setInterval(() => {
+            segundosTotais++;
+            const minutos = Math.floor(segundosTotais / 60);
+            const segundos = segundosTotais % 60;
+
+            const minutosFormatados = String(minutos).padStart(2, '0');
+            const segundosFormatados = String(segundos).padStart(2, '0');
+            timer.textContent = `${minutosFormatados}:${segundosFormatados}`;
+        }, 1000);
+    }
+    function pararTimer() {
+        clearInterval(timerIntervalo);
+        timerIntervalo = null;
+    }
+
+    function resetarTimer() {
+        pararTimer();
+        segundosTotais = 0;
+        timer.textContent = "00:00";
     }
 
     // Função principal que lê o JSON e constrói a interface do jogo.
@@ -159,21 +189,39 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    function reiniciarJogo() {
+        acertos = 0;
+        placarElemento.textContent = acertos;
+        feedbackErro.textContent = '';
+        feedbackFinal.textContent = '';
+        descricoesContainer.innerHTML = '';
+        etapasContainer.innerHTML = '';
+        btnReiniciar.style.display = 'none';
+
+        carregarJogo();
+    }
 
     function verificarFimDeJogo() {
         if (acertos === totalDeEtapas) {
             somVitoria.currentTime = 0; // Reinicia o som
             somVitoria.play();
-
-            feedbackFinal.textContent = 'Parabéns! Você completou o ciclo!';
-
+            feedbackFinal.textContent = 'Parabéns! Você completou o capítulo em ' + timer.textContent + '!';
+            btnReiniciar.style.display = 'block';
+            pararTimer();
         }
     }
-
     btnIniciar.addEventListener('click', () => {
         telaInicial.classList.remove('ativa');
         telaJogo.style.display = 'flex';
         telaJogo.classList.add('ativa');
+
+        iniciarTimer();
+    });
+
+    btnReiniciar.addEventListener('click',() => {
+        reiniciarJogo();
+        resetarTimer();
+        iniciarTimer();
     });
 
     carregarJogo();

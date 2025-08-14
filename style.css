@@ -88,6 +88,7 @@ body {
 }
 
 #placar {
+    width: 8rem;
     padding: 1rem 1.5rem;
     background-color: #ffffff;
     border-radius: 9999px;
@@ -143,6 +144,24 @@ body {
 
 .animar-acerto {
     animation: correct 0.5s linear 0s 1 normal forwards;
+}
+
+.info-jogo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+}
+
+#timer {
+    width: 12rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    background-color: #ffffff;
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 @keyframes wrong {
 	0%,
