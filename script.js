@@ -207,6 +207,11 @@ document.addEventListener('DOMContentLoaded', () => {
             somVitoria.currentTime = 0; // Reinicia o som
             somVitoria.play();
             feedbackFinal.textContent = '🏆Parabéns! Você completou o capítulo em ' + timer.textContent + '! 🏆';
+            confetti({
+                particleCount: 1200,
+                spread: 200,
+                origin: { y: 0.6 },
+            });
             btnReiniciar.style.display = 'block';
             pararTimer();
         }
