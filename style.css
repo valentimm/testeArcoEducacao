@@ -36,7 +36,8 @@ body {
     border-radius: 0.5rem;
 }
 
-#btn-iniciar:hover {
+#btn-iniciar:hover,
+#btn-reiniciar:hover {
     background-color: #0C2340;
     color: white;
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
@@ -148,9 +149,10 @@ body {
 
 .info-jogo{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap:8rem;
     align-items: center;
-    width: 50%;
+    width: 100%;
 }
 
 #timer {
@@ -235,4 +237,31 @@ body {
 		opacity: 1;
 		transform: translateY(0px);
 	}
+}
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+.info-jogo{
+    justify-content: center;
+    gap:1rem;
+}
+
+#timer {
+    width: 8rem;
+}
+
+#descricoes-container, #etapas-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:0.5rem;
+}
+.dropzone {
+    min-width: 6rem;
+}
+#feedback-final{
+    bottom: -4rem;
+    font-size: 1.2rem;
+    margin: 0 2rem;
+}
 }
