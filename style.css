@@ -243,6 +243,10 @@ body {
 /* Media Queries */
 
 @media (max-width: 768px) {
+
+body {
+    overflow: visible;
+}
 .info-jogo{
     justify-content: center;
     gap:1rem;
