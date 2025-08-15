@@ -1,5 +1,6 @@
 body {
     font-family: 'Poppins', sans-serif;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -245,6 +246,10 @@ body {
 .info-jogo{
     justify-content: center;
     gap:1rem;
+}
+
+.info-jogo {
+    margin-top: -6rem;
 }
 
 #placar, #timer {
