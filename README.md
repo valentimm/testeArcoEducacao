@@ -1,5 +1,7 @@
 # Jogo Educativo - O Ciclo da Água
 
+[![Deploy](https://img.shields.io/badge/Acessar%20o%20Jogo-f05a41?style=for-the-badge)](https://arcoeducacaoteste.mvalentim.dev/)
+
 *Teste Prático para a vaga de Analista de Desenvolvimento Pleno na Arco Educação.*
 
 ## 🎯 Sobre o Projeto
@@ -29,6 +31,8 @@ Este projeto é um Objeto Digital de Aprendizagem (ODA) interativo sobre o "Cicl
 - **Responsividade:** Design adaptável para diferentes tamanhos de tela.
 - Optei por usar JS puro para realização do projeto pelo fato de obter total domínio sobre as tecnologias citadas no briefing.
 ## 🏁 Como Executar
+
+Realizei o deploy do projeto na Vercel, [aqui](https://arcoeducacaoteste.mvalentim.dev/).
 
 O projeto não requer um servidor ou dependências. Basta seguir os passos:
 
