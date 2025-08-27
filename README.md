@@ -25,7 +25,6 @@ Este projeto é um Objeto Digital de Aprendizagem (ODA) interativo sobre o "Cicl
 
 - **HTML5**
 - **CSS3** (com Flexbox e Animações Keyframes)
-- **JavaScript (ES6+)** (com Fetch API e manipulação do DOM)
 - **Bibliotecas Externas:** Utilização da biblioteca `tsParticles` para animações de confete.
 - **Compatibilidade:** Testado e funcional em navegadores modernos (Chrome, Firefox, Edge, Safari).
 - **Responsividade:** Design adaptável para diferentes tamanhos de tela.
